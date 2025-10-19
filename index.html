@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Love Letter - Bức Thư Tình Yêu</title>
+    <link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
+
+<style>
+/* Style cho loading screen */
+.loading-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #fce4ec 0%, #f8bbd0 100%); /* Giữ nguyên màu hồng */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.loading-container {
+    text-align: center;
+}
+
+/* Hiệu ứng trái tim */
+.heart-3d {
+    position: relative;
+    width: 50px; /* Tăng kích thước từ 100px lên 150px */
+    height: 50px;
+    margin: auto;
+    /*animation: heartBeat 1.5s infinite ease-in-out;*/
+    transform-origin: center;
+    top:100px;
+    z-index: 1000;
+    transform:translate(500%,500%) scale(20);
+}
+
+.heart-piece {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #f5e1e4; /* Màu hồng đậm */
+    clip-path: path('M12 21.593c-5.63-5.539-11-10.297-11-14.402 0-3.791 3.068-5.191 5.281-5.191 1.312 0 4.151.501 5.719 4.457 1.59-3.968 4.464-4.447 5.726-4.447 2.54 0 5.274 1.621 5.274 5.181 0 4.069-5.136 8.625-11 14.402m5.726-20.583c-2.203 0-4.446 1.042-5.726 3.238-1.285-2.206-3.522-3.248-5.719-3.248-3.183 0-6.281 2.187-6.281 6.191 0 4.661 5.571 9.429 12 15.809 6.43-6.38 12-11.148 12-15.809 0-4.011-3.095-6.181-6.274-6.181');
+    filter: drop-shadow(0 0 10px rgba(233, 30, 99, 0.5));
+}
+
+@keyframes heartBeat {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(5.2); }
+}
+
+/* Text loading */
+.loading-text {
+    font-family: 'Dancing Script', cursive;
+    font-size: 2.5em;
+    color: #ece4e7;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+    margin: 20px 0;
+}
+
+/* Progress bar */
+.progress-container {
+    width: 200px;
+    height: 6px;
+    background: rgba(255,255,255,0.3);
+    border-radius: 3px;
+    margin: 20px auto;
+    overflow: hidden;
+}
+
+.progress-bar {
+    height: 100%;
+    background: #ece8e9;
+    width: 0%;
+    border-radius: 3px;
+    animation: progressIncrease 5s linear forwards;
+}
+
+@keyframes progressIncrease {
+    to { width: 100%; }
+}
+
+/* Loading message */
+.loading-message {
+    color: #f0efef;
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.5em;
+    margin-top: 20px;
+    opacity: 0.8;
+}
+</style>
+</head>
+<body >
+
+<div class="loading-screen" id="loadingScreen">
+    <div class="loading-container">
+        <div class="heart-3d">
+            <div class="heart-piece"></div>
+        </div>
+        <div class="loading-text">
+            Loading...
+        </div>
+        <div class="progress-container">
+            <div class="progress-bar"></div>
+        </div>
+        <div class="loading-message">
+            Chờ chút nhé...
+        </div>
+    </div>
+</div>
+
+
+
+    <div class="modal" id="letterModal">
+<div class="modal-content">
+    <img src="./butter-left.png" class="modal-butterfly left" alt="Butterfly">
+    <img src="./butter-right.png" class="modal-butterfly right" alt="Butterfly">
+    
+
+
+    <span class="close-btn">&times;</span>
+
+        <div class="letter-content-modal">
+            <h3>Gửi plinh !!</h3>
+            <p>Lời chúc 20/10 dành riêng cho bạn</p>
+            <p>Hôm nay là một ngày đặc biệt đối với cô gái đẹp nhất trong lòng mình. chúc cho cô gái đó luôn xinh đẹp và rực rợ như một đóa hoa, chúc cho cô gái đó cố gáng học thật giỏi để đạt được những ước mơ mà bản thân đề ra để sớm trở thành một người giáo viên gương mẫu đối với học sinh 💗</p>
+            <p>Đặc biệt trong thời điểm này mong sao cho cô gái của tớ mau mau khỏi bệnh để sớm quay lại làm một nàng công chúa của tớ nha💗</p>
+            <p>Một lần nữa chúc cho cô gái của tớ một ngày 20/10 thật vui vẻ hạnh phúc và nhận được thật nhiều lời chúc của những người xung quanh nha❤️</p>
+            <p>Lov plinh forever💗</p></br>
+           
+        </div>
+                        <div class="image-frame-container">
+        <div class="image-background">
+            <img src="a1.jpg" alt="Couple">
+        </div>
+    </div>
+
+    </div>
+</div>
+
+
+
+<div class="envelope" id="envelope">
+    <div class="hearts-container"></div>
+    
+    <div class="background flap"></div>
+    
+    <div class="bottom flap"></div>
+    
+    <div class="inner-letter">
+        <div class="letter-content">
+            <h3>Món Qùa Đặc Biệt</h3>
+            <h3>Gửi plinh !!</h3>
+            <p>Lời chúc 20/10 dành riêng cho bạn</p>
+            <p>Hôm nay là một ngày đặc biệt đối với cô gái đẹp nhất trong lòng mình. chúc cho cô gái đó luôn xinh đẹp và rực rợ như một đóa hoa, chúc cho cô gái đó cố gáng học thật giỏi để đạt được những ước mơ mà bản thân đề ra để sớm trở thành một người giáo viên gương mẫu đối với học sinh 💗</p>
+            <p>Đặc biệt trong thời điểm này mong sao cho cô gái của tớ mau mau khỏi bệnh để sớm quay lại làm một nàng công chúa của tớ nha💗</p>
+            <p>Một lần nữa chúc cho cô gái của tớ một ngày 20/10 thật vui vẻ hạnh phúc và nhận được thật nhiều lời chúc của những người xung quanh nha❤️</p></br>
+            <p style="text-align: right; margin-top: 20px;">Lov plinh forever💗</p>
+        </div>
+    </div>
+
+    <div class="left flap"></div>
+    <div class="right flap"></div>
+    
+    <div class="top flap"></div>
+    
+    <!-- Hoa -->
+    <div class="flowers">
+        <div class="flower left"></div>
+        <div class="flower right"></div>
+    </div>
+</div>
+<!-- trái tim -->
+
+  
+  <div class="bubbles">
+
+
+
+    <div class="bubble"><svg class="hearts" viewBox="0 0 32 32">
+        <title>heart22</title>
+        <path d="M23.6 2c-3.363 0-6.258 2.736-7.599 5.594-1.342-2.858-4.237-5.594-7.601-5.594-4.637 0-8.4 3.764-8.4 8.401 0 9.433 9.516 11.906 16.001 21.232 6.13-9.268 15.999-12.1 15.999-21.232 0-4.637-3.763-8.401-8.4-8.401z"></path>
+      </svg>
+    </div>
+    <div class="bubble"><svg class="hearts" viewBox="0 0 32 32">
+        <title>heart22</title>
+        <path d="M23.6 2c-3.363 0-6.258 2.736-7.599 5.594-1.342-2.858-4.237-5.594-7.601-5.594-4.637 0-8.4 3.764-8.4 8.401 0 9.433 9.516 11.906 16.001 21.232 6.13-9.268 15.999-12.1 15.999-21.232 0-4.637-3.763-8.401-8.4-8.401z"></path>
+      </svg>
+    </div>
+    <div class="bubble"><svg class="hearts" viewBox="0 0 32 32">
+        <title>heart22</title>
+        <path d="M23.6 2c-3.363 0-6.258 2.736-7.599 5.594-1.342-2.858-4.237-5.594-7.601-5.594-4.637 0-8.4 3.764-8.4 8.401 0 9.433 9.516 11.906 16.001 21.232 6.13-9.268 15.999-12.1 15.999-21.232 0-4.637-3.763-8.401-8.4-8.401z"></path>
+      </svg>
+    </div>
+    <div class="bubble"><svg class="hearts" viewBox="0 0 32 32">
+        <title>heart22</title>
+        <path d="M23.6 2c-3.363 0-6.258 2.736-7.599 5.594-1.342-2.858-4.237-5.594-7.601-5.594-4.637 0-8.4 3.764-8.4 8.401 0 9.433 9.516 11.906 16.001 21.232 6.13-9.268 15.999-12.1 15.999-21.232 0-4.637-3.763-8.401-8.4-8.401z"></path>
+      </svg>
+    </div>
+    <div class="bubble"><svg class="hearts" viewBox="0 0 32 32">
+        <title>heart22</title>
+        <path d="M23.6 2c-3.363 0-6.258 2.736-7.599 5.594-1.342-2.858-4.237-5.594-7.601-5.594-4.637 0-8.4 3.764-8.4 8.401 0 9.433 9.516 11.906 16.001 21.232 6.13-9.268 15.999-12.1 15.999-21.232 0-4.637-3.763-8.401-8.4-8.401z"></path>
+      </svg>
+    </div>
+    <div class="bubble"><svg class="hearts" viewBox="0 0 32 32">
+        <title>heart22</title>
+        <path d="M23.6 2c-3.363 0-6.258 2.736-7.599 5.594-1.342-2.858-4.237-5.594-7.601-5.594-4.637 0-8.4 3.764-8.4 8.401 0 9.433 9.516 11.906 16.001 21.232 6.13-9.268 15.999-12.1 15.999-21.232 0-4.637-3.763-8.401-8.4-8.401z"></path>
+      </svg>
+    </div>
+    <div class="bubble"><svg class="hearts" viewBox="0 0 32 32">
+        <title>heart22</title>
+        <path d="M23.6 2c-3.363 0-6.258 2.736-7.599 5.594-1.342-2.858-4.237-5.594-7.601-5.594-4.637 0-8.4 3.764-8.4 8.401 0 9.433 9.516 11.906 16.001 21.232 6.13-9.268 15.999-12.1 15.999-21.232 0-4.637-3.763-8.401-8.4-8.401z"></path>
+      </svg>
+    </div>
+    <div class="bubble"><svg class="hearts" viewBox="0 0 32 32">
+        <title>heart22</title>
+        <path d="M23.6 2c-3.363 0-6.258 2.736-7.599 5.594-1.342-2.858-4.237-5.594-7.601-5.594-4.637 0-8.4 3.764-8.4 8.401 0 9.433 9.516 11.906 16.001 21.232 6.13-9.268 15.999-12.1 15.999-21.232 0-4.637-3.763-8.401-8.4-8.401z"></path>
+      </svg>
+    </div>
+    <div class="bubble"><svg class="hearts" viewBox="0 0 32 32">
+        <title>heart22</title>
+        <path d="M23.6 2c-3.363 0-6.258 2.736-7.599 5.594-1.342-2.858-4.237-5.594-7.601-5.594-4.637 0-8.4 3.764-8.4 8.401 0 9.433 9.516 11.906 16.001 21.232 6.13-9.268 15.999-12.1 15.999-21.232 0-4.637-3.763-8.401-8.4-8.401z"></path>
+      </svg>
+    </div>
+    <div class="bubble"><svg class="hearts" viewBox="0 0 32 32">
+        <title>heart22</title>
+        <path d="M23.6 2c-3.363 0-6.258 2.736-7.599 5.594-1.342-2.858-4.237-5.594-7.601-5.594-4.637 0-8.4 3.764-8.4 8.401 0 9.433 9.516 11.906 16.001 21.232 6.13-9.268 15.999-12.1 15.999-21.232 0-4.637-3.763-8.401-8.4-8.401z"></path>
+      </svg>
+    </div>
+    <div class="bubble"><svg class="hearts" viewBox="0 0 32 32">
+        <title>heart22</title>
+        <path d="M23.6 2c-3.363 0-6.258 2.736-7.599 5.594-1.342-2.858-4.237-5.594-7.601-5.594-4.637 0-8.4 3.764-8.4 8.401 0 9.433 9.516 11.906 16.001 21.232 6.13-9.268 15.999-12.1 15.999-21.232 0-4.637-3.763-8.401-8.4-8.401z"></path>
+      </svg>
+    </div>
+    <div class="bubble"><svg class="hearts" viewBox="0 0 32 32">
+        <title>heart22</title>
+        <path d="M23.6 2c-3.363 0-6.258 2.736-7.599 5.594-1.342-2.858-4.237-5.594-7.601-5.594-4.637 0-8.4 3.764-8.4 8.401 0 9.433 9.516 11.906 16.001 21.232 6.13-9.268 15.999-12.1 15.999-21.232 0-4.637-3.763-8.401-8.4-8.401z"></path>
+      </svg>
+    </div>
+    <div class="bubble"><svg class="hearts" viewBox="0 0 32 32">
+        <title>heart22</title>
+        <path d="M23.6 2c-3.363 0-6.258 2.736-7.599 5.594-1.342-2.858-4.237-5.594-7.601-5.594-4.637 0-8.4 3.764-8.4 8.401 0 9.433 9.516 11.906 16.001 21.232 6.13-9.268 15.999-12.1 15.999-21.232 0-4.637-3.763-8.401-8.4-8.401z"></path>
+      </svg>
+    </div>
+    <div class="bubble"><svg class="hearts" viewBox="0 0 32 32">
+        <title>heart22</title>
+        <path d="M23.6 2c-3.363 0-6.258 2.736-7.599 5.594-1.342-2.858-4.237-5.594-7.601-5.594-4.637 0-8.4 3.764-8.4 8.401 0 9.433 9.516 11.906 16.001 21.232 6.13-9.268 15.999-12.1 15.999-21.232 0-4.637-3.763-8.401-8.4-8.401z"></path>
+      </svg>
+    </div>
+    <div class="bubble"><svg class="hearts" viewBox="0 0 32 32">
+        <title>heart22</title>
+        <path d="M23.6 2c-3.363 0-6.258 2.736-7.599 5.594-1.342-2.858-4.237-5.594-7.601-5.594-4.637 0-8.4 3.764-8.4 8.401 0 9.433 9.516 11.906 16.001 21.232 6.13-9.268 15.999-12.1 15.999-21.232 0-4.637-3.763-8.401-8.4-8.401z"></path>
+      </svg>
+    </div>
+    <div class="bubble"><svg class="hearts" viewBox="0 0 32 32">
+        <title>heart22</title>
+        <path d="M23.6 2c-3.363 0-6.258 2.736-7.599 5.594-1.342-2.858-4.237-5.594-7.601-5.594-4.637 0-8.4 3.764-8.4 8.401 0 9.433 9.516 11.906 16.001 21.232 6.13-9.268 15.999-12.1 15.999-21.232 0-4.637-3.763-8.401-8.4-8.401z"></path>
+      </svg>
+    </div>
+    <div class="bubble"><svg class="hearts" viewBox="0 0 32 32">
+        <title>heart22</title>
+        <path d="M23.6 2c-3.363 0-6.258 2.736-7.599 5.594-1.342-2.858-4.237-5.594-7.601-5.594-4.637 0-8.4 3.764-8.4 8.401 0 9.433 9.516 11.906 16.001 21.232 6.13-9.268 15.999-12.1 15.999-21.232 0-4.637-3.763-8.401-8.4-8.401z"></path>
+      </svg>
+    </div>
+    <div class="bubble"><svg class="hearts" viewBox="0 0 32 32">
+        <title>heart22</title>
+        <path d="M23.6 2c-3.363 0-6.258 2.736-7.599 5.594-1.342-2.858-4.237-5.594-7.601-5.594-4.637 0-8.4 3.764-8.4 8.401 0 9.433 9.516 11.906 16.001 21.232 6.13-9.268 15.999-12.1 15.999-21.232 0-4.637-3.763-8.401-8.4-8.401z"></path>
+      </svg>
+    </div>
+    <div class="bubble"><svg class="hearts" viewBox="0 0 32 32">
+        <title>heart22</title>
+        <path d="M23.6 2c-3.363 0-6.258 2.736-7.599 5.594-1.342-2.858-4.237-5.594-7.601-5.594-4.637 0-8.4 3.764-8.4 8.401 0 9.433 9.516 11.906 16.001 21.232 6.13-9.268 15.999-12.1 15.999-21.232 0-4.637-3.763-8.401-8.4-8.401z"></path>
+      </svg>
+    </div>
+    <div class="bubble"><svg class="hearts" viewBox="0 0 32 32">
+        <title>heart22</title>
+        <path d="M23.6 2c-3.363 0-6.258 2.736-7.599 5.594-1.342-2.858-4.237-5.594-7.601-5.594-4.637 0-8.4 3.764-8.4 8.401 0 9.433 9.516 11.906 16.001 21.232 6.13-9.268 15.999-12.1 15.999-21.232 0-4.637-3.763-8.401-8.4-8.401z"></path>
+      </svg>
+    </div>
+  </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const loadingScreen = document.getElementById('loadingScreen');
+    const messages = [
+        'Đang gói ghém yêu thương...',
+        'Chờ thêm chút nữa...',
+        'Sắp mở được rồi...'
+    ];
+    let messageIndex = 0;
+
+    // Đổi message
+    const messageElement = document.querySelector('.loading-message');
+    setInterval(() => {
+        messageIndex = (messageIndex + 1) % messages.length;
+        messageElement.style.opacity = 0;
+        setTimeout(() => {
+            messageElement.textContent = messages[messageIndex];
+            messageElement.style.opacity = 1;
+        }, 300);
+    }, 1500);
+
+    // Ẩn loading screen sau 5 giây
+    setTimeout(() => {
+        loadingScreen.style.opacity = '0';
+        loadingScreen.style.transition = 'opacity 0.5s ease-out';
+        setTimeout(() => {
+            loadingScreen.style.display = 'none';
+        }, 500);
+    }, 10000);
+});
+</script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const envelope = document.getElementById('envelope');
+        let isOpen = false;
+
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.className = 'heart';
+            heart.style.left = '50%';
+            heart.style.bottom = '50%';
+            
+            const tx = (Math.random() - 0.5) * 200;
+            const ty = -Math.random() * 200;
+            heart.style.setProperty('--tx', `${tx}px`);
+            heart.style.setProperty('--ty', `${ty}px`);
+            
+            heart.style.animation = 'floatHeart 2s ease-out forwards';
+            
+            document.querySelector('.hearts-container').appendChild(heart);
+            
+            setTimeout(() => {
+                heart.remove();
+            }, 2000);
+        }
+
+        function createHearts() {
+            for(let i = 0; i < 10; i++) {
+                setTimeout(createHeart, i * 100);
+            }
+        }
+
+        envelope.addEventListener('click', function() {
+            if (!isOpen) {
+                this.classList.add('open');
+                isOpen = true;
+                setTimeout(createHearts, 500);
+            } else {
+                this.classList.remove('open');
+                isOpen = false;
+            }
+        });
+    });
+</script>
+<script>
+
+    document.addEventListener('DOMContentLoaded', function() {
+    const envelope = document.getElementById('envelope');
+    const innerLetter = document.querySelector('.inner-letter');
+    let isOpen = false;
+    let isModalOpen = false;
+
+    // Thêm modal vào body
+    const modalHTML = `
+
+    `;
+    document.body.insertAdjacentHTML('beforeend', modalHTML);
+
+    const modal = document.getElementById('letterModal');
+    const closeBtn = document.querySelector('.close-btn');
+
+    function createHeart() {
+        const heart = document.createElement('div');
+        heart.className = 'heart';
+        heart.style.left = '50%';
+        heart.style.bottom = '50%';
+        
+        const tx = (Math.random() - 0.5) * 200;
+        const ty = -Math.random() * 200;
+        heart.style.setProperty('--tx', `${tx}px`);
+        heart.style.setProperty('--ty', `${ty}px`);
+        
+        heart.style.animation = 'floatHeart 2s ease-out forwards';
+        
+        document.querySelector('.hearts-container').appendChild(heart);
+        
+        setTimeout(() => {
+            heart.remove();
+        }, 2000);
+    }
+
+    function createHearts() {
+        for(let i = 0; i < 10; i++) {
+            setTimeout(createHeart, i * 100);
+        }
+    }
+
+    // Xử lý click vào phong bì
+    envelope.addEventListener('click', function(e) {
+        // Kiểm tra nếu click vào top flap
+        if (e.target.classList.contains('top') && isOpen) {
+            this.classList.remove('open');
+            isOpen = false;
+            return;
+        }
+
+        // Nếu click vào lá thư khi đã mở
+        if (e.target.closest('.inner-letter') && isOpen) {
+            if (!isModalOpen) {
+                modal.classList.add('show');
+                isModalOpen = true;
+                document.body.style.overflow = 'hidden';
+            }
+            return;
+        }
+
+        // Mở phong bì
+        if (!isOpen) {
+            this.classList.add('open');
+            isOpen = true;
+            setTimeout(createHearts, 500);
+        }
+    });
+
+    // Xử lý đóng modal
+    closeBtn.addEventListener('click', function() {
+        modal.classList.remove('show');
+        isModalOpen = false;
+        document.body.style.overflow = 'auto';
+    });
+
+    // Xử lý click ngoài modal để đóng
+    window.addEventListener('click', function(e) {
+        if (e.target === modal) {
+            modal.classList.remove('show');
+            isModalOpen = false;
+            document.body.style.overflow = 'auto';
+        }
+    });
+
+    // Thêm hiệu ứng hover cho lá thư
+    innerLetter.addEventListener('mouseover', function() {
+        if (isOpen) {
+            this.style.transform = 'translateY(-55px) scale(1.02)';
+        }
+    });
+
+    innerLetter.addEventListener('mouseout', function() {
+        if (isOpen) {
+            this.style.transform = 'translateY(-50px)';
+        }
+    });
+});
+</script>
+</body>
+</html>
